@@ -1,0 +1,133 @@
+<Main>:
+    name: "main"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "AniLang"
+            font_size: 32
+
+        Button:
+            text: "Начать изучать"
+            font_size: 32
+            on_press:
+                app.root.transition.direction = 'left'
+                app.root.get_screen('Lern').restart()
+
+        Button:
+            text: "Натстройки"
+            font_size: 32
+            on_release:
+                app.root.transition.direction = 'left'
+                app.root.current = "option"
+
+
+<Option>:
+    name: "option"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "Настройки"
+            font_size: 32
+
+        BoxLayout:
+            orientation: "horizontal"
+            size: root.width, root.height
+
+            Label:
+                text: 'Светлая тема включена   ' if switch.active else 'Светлая тема выключена'
+                font_size: 32
+
+            Switch:
+                id: switch
+                on_touch_up: root.switch_theme((0.05, 0.05, 0.05, 0.8),(1, 1, 1, 1)) if switch.active else root.switch_theme((0.89, 0.89, 0.89, 0.8),(0, 0, 0, 0.8))
+
+
+        Button:
+            text: "Назад"
+            font_size: 32
+            on_press:
+                app.root.transition.direction = 'right'
+                app.root.current = "main"
+
+
+
+<LernScreen>:
+    name: "Lern"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        Label:
+            id:WORD
+            text: root.word
+            font_size: 32
+        TextInput:
+            id: input
+            font_size: 32
+            focus: True
+            padding_x:[self.center[0] - self._get_text_width(max(self._lines, key=len), self.tab_width, self._label_cached) / 2.0,0] if self.text else [self.center[0], 0]
+            padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+            multiline: False
+            on_text_validate: root.check(input.text)
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Проверить"
+                font_size: 32
+                on_release:
+                    app.root.transition.direction = 'left'
+                    root.check(input.text)
+            Button:
+                text: "Закончить"
+                font_size: 32
+                on_release:
+                    app.root.transition.direction = 'left'
+                    root.finish_try()
+<WrongScreen>:
+    name: "wrong"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "НЕВЕРНО"
+            font_size: 32
+        Label:
+            id: right_words
+            text: "-=-=-"
+            font_size: 32
+
+        Button:
+            text: "Назад"
+            font_size: 32
+            on_press:
+                app.root.transition.direction = 'right'
+                app.root.current = "Lern"
+<EndScreen>:
+    name: "end"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            id: try_count
+            font_size: 32
+        Label:
+            id: right_count
+            font_size: 32
+        Label:
+            id: wrong_coutn
+            font_size: 32
+
+        Button:
+            text: "Вернуться в меню"
+            font_size: 32
+            on_press:
+                app.root.transition.direction = 'right'
+                app.root.current = "main"
