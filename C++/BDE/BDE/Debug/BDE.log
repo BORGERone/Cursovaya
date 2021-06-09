@@ -1,0 +1,8 @@
+﻿  BDE.cpp
+C:\Users\BORGER\source\repos\BDE\BDE\BDE.cpp(38,27): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+C:\Users\BORGER\source\repos\BDE\BDE\BDE.cpp(44,33): error C3260: ";": пропускаются непредвиденные токены перед телом лямбда-функции
+C:\Users\BORGER\source\repos\BDE\BDE\BDE.cpp(44,25): error C2679: бинарный "=": не найден оператор, принимающий правый операнд типа "main::<lambda_51fea8a292c247729a47cdcf19ffe2fd>" (или приемлемое преобразование отсутствует)
+C:\Users\BORGER\source\repos\BDE\include\nlohmann\json.hpp(18745,17): message : может быть "nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>> &nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>>::operator =(nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>>) noexcept"
+C:\Users\BORGER\source\repos\BDE\BDE\BDE.cpp(55,1): message : при попытке сопоставить список аргументов "(nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>>, main::<lambda_51fea8a292c247729a47cdcf19ffe2fd>)"
+C:\Users\BORGER\source\repos\BDE\BDE\BDE.cpp(55,1): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\BORGER\source\repos\BDE\BDE\BDE.cpp(56,1): fatal error C1004: непредвиденное обнаружение конца файла
